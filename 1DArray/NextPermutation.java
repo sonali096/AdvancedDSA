@@ -40,6 +40,7 @@ public class NextPermutation {
                 break;
             }
         }
+        //reverse the remaining number which are right of breaking index
         swap(A, index-1, swapIdx);
         return A;
         
