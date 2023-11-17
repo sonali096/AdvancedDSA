@@ -19,13 +19,7 @@ public class SortedInsertPosition {
 }
 /*
  * Q1. Sorted Insert Position
-Solved
-feature icon
-Get your doubts resolved blazing fast with Chat GPT Help
-Check Chat GPT
-feature icon
-Using hints is now penalty free
-Use Hint
+ 
 Problem Description
 You are given a sorted array A of size N and a target value B.
 Your task is to find the index (0-based indexing) of the target value in the array.

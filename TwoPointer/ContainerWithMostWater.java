@@ -1,6 +1,23 @@
 package TwoPointer;
 
 public class ContainerWithMostWater {
+    public int maxArea(int[] A) {
+        int n = A.length;
+        int i = 0, j = n-1, ans = 0;
+        while(i<j){
+            int cur = Math.min(A[i],A[j]) * (j-i);
+            ans = Math.max(cur,ans);
+            if(A[i]<A[j]){
+                i++;
+            }else if(A[j]<A[i]){
+                j--;
+            }else{
+                i++;
+                j--;
+            }
+        }
+        return ans;
+    }
     
 }
 /*Problem Description
@@ -58,4 +75,4 @@ So total area = 3 * 2 = 6
 Explanation 2:
 
  
-No container is formed. */
+No container is formed.  */
