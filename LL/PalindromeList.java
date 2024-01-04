@@ -9,7 +9,49 @@ package LL;
  */
 public class PalindromeList {
     public int lPalin(ListNode A) {
+        int l = findlen(A);
+        ListNode a = getkthelemenet(A, (l - 1)/2);
+        ListNode hc = a.next;
+        a.next = null;
+        hc = reverseList(hc);
 
+        //Compare
+        ListNode i = A;
+        ListNode j = hc;
+        while(j!=null){
+            if(i.val != j.val) return 0;
+            i = i.next;
+            j = j.next;
+        }
+        return 1;
+    }
+    private ListNode reverseList(ListNode A){
+        if( A == null || A.next == null) return A;
+        ListNode prev = null;
+        ListNode curr = A;
+        while(curr != null){
+            ListNode next = curr.next;
+            curr.next = prev;
+            prev = curr;
+            curr = next;
+        }
+        return prev;
+    }
+    private ListNode getkthelemenet(ListNode A, int k){
+        ListNode hc = A;
+        for(int i = 0; i < k; i++){
+            hc = hc.next;
+        }
+        return hc;
+    }
+    private int findlen(ListNode A){
+        int c = 0;
+        ListNode hc = A;
+        while(hc != null){
+            c++;
+            hc = hc.next;
+        }
+        return c;
     }
     
 }

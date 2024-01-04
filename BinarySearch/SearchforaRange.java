@@ -24,7 +24,7 @@ public class SearchforaRange {
             int m = (l+r)/2;
             if(A[m] == k){
                 ans = m;
-                l = m +g 1;
+                l = m + 1;
             }else if(k >= A[m]){
                 l = m + 1;
             }else{

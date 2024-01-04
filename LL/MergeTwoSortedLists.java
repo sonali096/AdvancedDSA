@@ -25,10 +25,10 @@ public class MergeTwoSortedLists {
         ListNode temp = head;
         while(A!=null && B!=null){
             if(A.val <= B.val){
-                temp = A;
+                temp.next = A;
                 A = A.next;
             }else{
-                temp = B;
+                temp.next = B;
                 B = B.next;
             }
             temp = temp.next;

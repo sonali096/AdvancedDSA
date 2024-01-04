@@ -1,13 +1,55 @@
 package Sorting;
 
 public class Inversioncountinanarray {
-    long cnt = 0;
+    static long count;
+    public static int[] mergeTwoSortedArray(int[] A , int[] B){
+        int n = A.length;
+        int m = B.length;
+        long mod =  1000000000 + 7;
+        int i = 0 , j = 0 , k = 0;
+        int[] ans = new int[n + m];
+        while(i < n && j < m){
+            if(A[i] > B[j]){
+                ans[k] = B[j];
+                j++;
+                count = (count + (n - i) ) % mod;;
+            }
+            else{
+                ans[k] = A[i];
+                i++;
+            }
+            k++;
+        }
+        while(i < n){
+            ans[k] = A[i];
+            i++;
+            k++;
+        }
+        while(j <  m){
+            ans[k] = B[j];
+            j++;
+            k++;
+        }
+        return ans;
+    }
+    public static int[] mergeSort(int[] arr , int l , int r){
+        if(l == r){
+            int bres[] = int[1];
+            bres[0] = arr[l];
+            return bres;
+        }
+        int m = (l+r)/2;
+        int A[] = mergeSort(arr, l, m);
+        int B[] = mergeSort(arr, m+1, r);
+        int C[] = mergeTwoSortedArray(A, B);
+        return C;
+    }
     public int solve(int[] A) {
         int n = A.length;
-        mergesort(A, 0, n-1);
-        return (int)(cnt%(int) (1e9 + 7));
+        count = 0;
+        int ans[] = mergeSort(A, 0, n-1);
+        return (int)count;
     }
-    
 }
 /*Problem Description
 Given an array of integers A. If i < j and A[i] > A[j], then the pair (i, j) is called an inversion of A. Find the total number of inversions of A modulo (109 + 7).

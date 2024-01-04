@@ -30,6 +30,33 @@ public class SingleElementinSortedArray {
     }
     
 }
+public class Solution {
+    public int solve(int[] A) {
+        int n = A.length;
+        int l = 0, r = n-1;
+        while(l<=r){
+            int m = (l+r)/2;
+            //int x = A[m-1], y = A[m], z = A[m+1]
+            if((m==0 || A[m-1]!=A[m]) && (m==n-1 || A[m+1] != A[m])){
+                return A[m];
+            }
+            if(m==0 || A[m-1]!=A[m]){
+                if(m%2==0){
+                    l = m + 1;
+                }else{
+                    r = m - 1;
+                }
+            }else{
+                if(m%2==0){
+                    r = m -1;
+                }else{
+                    l = m+1;
+                }
+            }
+        }
+        return -1;
+    }
+}
 /*Single Element in Sorted Array
  * Problem Description
 Given a sorted array of integers A where every element appears twice except for one element which appears once, find and return this single element that appears only once.
