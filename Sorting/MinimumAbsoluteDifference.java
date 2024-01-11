@@ -1,7 +1,10 @@
 package Sorting;
 
+import java.util.Arrays;
+
 public class MinimumAbsoluteDifference {
     public int solve(int[] A) {
+        Arrays.sort(A);
         int n = A.length;
         int res = Integer.MAX_VALUE;
         for(int i = 0; i < n-1;i++){

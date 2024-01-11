@@ -1,6 +1,6 @@
 package Sorting;
 
-public class B ClosestPointstoOrigin {
+public class BClosestPointstoOrigin {
     
 }
 /*We have a list A of points (x, y) on the plane. Find the B closest points to the origin (0, 0).

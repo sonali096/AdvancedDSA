@@ -1,6 +1,28 @@
 package Sorting;
 
 public class CountSort {
+    public int[] solve(int[] A) {
+        int n = A.length;
+        int max = Integer.MIN_VALUE;
+        //find max element in arrau
+        for(int i = 0; i < n; i++){
+            max = Math.max(max, A[i]);
+        }
+        //create a frequency array
+        int freq[] = new int[max+1];
+        for(int i = 0; i <= mx; i++){
+            freq[A[i]] += 1;
+        }
+        //now sort and print
+        int k = 0;
+        for(int i = 0; i <= max;i++){
+            for(int j = 0; j < freq[i]; j++){
+                A[k] = i;
+                k++;
+            }
+        }
+        return A;
+    }
     
     
 }
