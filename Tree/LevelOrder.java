@@ -1,5 +1,10 @@
 package Tree;
 
+import java.util.ArrayList;
+import java.util.Queue;
+
+import LL.LinkedList;
+
 class TreeNode {
     int val;
     TreeNode left;
@@ -13,39 +18,29 @@ class TreeNode {
 
 public class LevelOrder {
     public ArrayList<ArrayList<Integer>> solve(TreeNode A) {
-        // Base case: Return empty list if root is null
-        if (A == null) return new ArrayList<>();
-        Queue<TreeNode> q = new LinkedList<>();
-        q.add(A);
         ArrayList<ArrayList<Integer>> ans = new ArrayList<ArrayList<Integer>>();
-        ArrayList<Integer> first = new ArrayList<Integer>();
-        first.add(A.val);
-        ans.add(first);
-
-        while (!q.isEmpty()) {
-
-            // Current level list
-            ArrayList<Integer> level = new ArrayList<Integer>();
-            int n = q.size();
-
-            for (int i = 0; i < n; i++) {
-                TreeNode curr = q.poll();
-
-                // Add current node value to level list
-                level.add(curr.val);
-
-                if (curr.left != null) {
-                    q.add(curr.left);
+        Queue<TreeNode> q = new LinkedList<TreeNode>();
+        TreeNode last = A;
+        if(A==null){
+            return ans;
+        }
+        q.add(A);
+        while(!q.isEmpty()){
+            int size = q.size();
+            ArrayList<Integer> list = new ArrayList<Integer>();
+            for(int i = 0; i < size; i++){
+                TreeNode f = q.peek();
+                q.remove();
+                list.add(f.val);
+                if(f.left!=null){
+                    q.add(f.left);
                 }
-                if (curr.right != null) {
-                    q.add(curr.right);
+                if(f.right != null){
+                    q.add(f.right);
                 }
             }
-            ans.add(level);
+            ans.add(list);
         }
-
-        // Remove the first level (root node only)
-        ans.remove(0);
         return ans;
     }
     
