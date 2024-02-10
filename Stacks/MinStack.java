@@ -1,6 +1,38 @@
 package Stacks;
 
+import java.util.Stack;
+
 public class MinStack {
+    Stack<Integer> st = new Stack<>();
+    int min = Integer.MAX_VALUE;
+    public void push(int x) {
+        if(x<=min){
+            st.push(min);
+            min = x;
+        }
+        st.push(x);
+    }
+    public void pop() {
+        if(st.isEmpty()) return;
+        if(st.pop() == min){
+            min = st.pop();
+        }
+    }
+    public int top(){
+        if(st.isEmpty()){
+            return -1;
+        }else{
+            return st.peek();
+        }
+    }
+    public int getMin() {
+        if(st.isEmpty()){
+            return -1;
+        }else{
+            return min;
+        }
+    }
+
     
 }
 /*Problem Description

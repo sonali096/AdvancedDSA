@@ -21,16 +21,12 @@ public class RightViewofBinarytree {
         q.add(A);
         while(!q.isEmpty()){
             int n = q.size();
-            for(int i = 1; i <= n; i++){
-                TreeNode r = q.remove();
-                if(i==n){
-                    ans.add(r.val);
-                }
-                if(r.right!=null){
-                    q.add(r.right);
-                }else if(r.left!=null){
-                    q.add(r.left);
-                }
+            TreeNode last_node = q.peek();
+            ans.add(last_node.val);
+            while(n-- > 0){
+                TreeNode f = q.poll();
+                if(f.right!= null) q.add(f.right);
+                if(f.left!=null) q.add(f.right);
             }
         }
         return ans;

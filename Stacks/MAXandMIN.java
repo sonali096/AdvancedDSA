@@ -1,7 +1,97 @@
 package Stacks;
 
 public class MAXandMIN {
-    
+    public int solve(int[] A) {
+        long mod = (long) 1000000007;
+        long ans = 0;
+        int [] ngl_ar = nglIndex(A);
+        int [] ngr_ar = ngrIndex(A);
+
+        int [] nsl_ar = nslIndex(A);
+        int [] nsr_ar = nsrIndex(A);
+
+        for (int i = 0; i < A.length; i++) {
+            int s1 = ngl_ar[i] + 1, e1 = ngr_ar[i] -1;
+            long total_max = 1L * (i-s1+1) * (e1-i+1);
+            int s2 = nsl_ar[i] + 1, e2 = nsr_ar[i] -1;
+            long min = 1L * (i-s2+1) * (e2-i+1);
+            ans = ans + (total_max - total_min) * A[i];
+        }
+        return (int) (ans % mod);
+    }
+    public int[] nglIndex(int[] A) {
+        int n = A.length;
+        int res[] = new int[n];
+        Stack<Integer> stk = new Stack<>();
+        for(int i = 0; i < n; i++){
+            int val = A[i];
+            while(stk.size() > 0 && A[stk.peek()] <= val){
+                stk.pop();
+            }
+            if(stk.size()>0){
+                res[i] = stk.peek();
+            }else{
+                res[i] = -1;
+            }
+            stk.push(i);
+        }
+        return res;
+
+    }
+    public int[] ngrIndex(int[] A) {
+        int n = A.length;
+        int res[] = new int[n];
+        Stack<Integer> stk = new Stack<>();
+        for(int i = n-1; i >= 0; i--){
+            int val = A[i];
+            while(stk.size() > 0 && A[stk.peek()] <= val){
+                stk.pop();
+            }
+            if(stk.size()>0){
+                res[i] = stk.peek();
+            }else{
+                res[i] = n;
+            }
+            stk.push(i);
+        }
+        return res;
+    }
+    public int[] nslIndex(int[] A) {
+        int n = A.length;
+        int res[] = new int[n];
+        Stack<Integer> stk = new Stack<>();
+        for(int i = 0; i < n; i++){
+            int val = A[i];
+            while(stk.size() > 0 && A[stk.peek()] >= val){
+                stk.pop();
+            }
+            if(stk.size()>0){
+                res[i] = stk.peek();
+            }else{
+                res[i] = -1;
+            }
+            stk.push(i);
+        }
+        return res;
+    }
+    public int[] nsrIndex(int[] A) {
+        int n = A.length;
+        int res[] = new int[n];
+        Stack<Integer> stk = new Stack<>();
+        for(nt i=n-1 ;i>=0; i--){
+            int val = A[i];
+            while(stk.size() > 0 && A[stk.peek()] >= val){
+                stk.pop();
+            }
+            if(stk.size()>0){
+                res[i] = stk.peek();
+            }else{
+                res[i] = n;
+            }
+            stk.push(i);
+        }
+        return res;
+    }
 }
 /*Problem Description
 Given an array of integers A.

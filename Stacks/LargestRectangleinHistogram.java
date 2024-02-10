@@ -7,10 +7,10 @@ public class LargestRectangleinHistogram {
         int ans = 0;
         int n = A.length;
         int nearestLeft[] = new int[n];
-        int nearestReft[] = new int[n];
+        int nearestRight[] = new int[n];
         for(int i = 0 ; i < n; i++){
             int h = A[i];
-            int s = nearestLeft[i], e = nearestReft[i];
+            int s = nearestLeft[i], e = nearestRight[i];
             int w = e - s - 1;
             int area = h * w;
             ans = Math.max(ans, area);
@@ -34,7 +34,7 @@ public class LargestRectangleinHistogram {
         }
         return ans;
     }
-    public int[] nearestReft(int [] A){
+    public int[] nearestRight(int [] A){
         int n = A.length;
         Stack<Integer> myStack = new Stack<>();
         int ans[] = new int[n];
